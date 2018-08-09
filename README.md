@@ -1,8 +1,18 @@
-# botframework-example: An intent-aware AI powered bot
+# Botframework-example: An intent-aware AI powered bot
 
-[Botframework](https://dev.botframework.com/) provides a simple-to-use interface through a NodeJS SDK, and REST APIs to be integrated by your chatbot application. In order to reduce some of the hassle of building intelligent bots. this example uses [LUIS.ai](https://www.luis.ai/), which is already integrated with Botframework.
+This repository implements a clothing e-commerce chatbot assistant using Botframework NodeJS API and two approaches: a cloud-based machine learning framework LUIS.ai, and a custom Naive Bayes classifier. Examples are inspired on the book [Build Better Chatbots](http://a.co/1FB75o2) written by Rashid Khan. Source code was corrected on certain scenarios where features are deprecated in current API versions.
+
+[Botframework](https://dev.botframework.com/) provides a simple-to-use interface through a NodeJS SDK, and REST APIs to be integrated by your chatbot application. In order to reduce some of the hassle of building intelligent bots. this example uses [LUIS.ai](https://www.luis.ai/), which is already integrated with Botframework, however, a custom ML model was also implemented to showcase diffenent solution approaches.
 
 To run one of the examples, you will need a **Microsoft Live ID** to sign up for Botframework services. Botframework services are **free to use**, and you do not need to enter your credit card information.
+
+### Chatbot features
+
+* Intent-aware chatbot.
+* Omnichannel communication framework, so you can plug-in your chatbot implementation on any messaging platform.
+* Messaging logging storage for analytics.
+* Chatbot implementation examples using a both a cloud-based ML service and a custom model.
+* Support for english and spanish (**under construction**) audiences.
 
 ### Installation requirements
 
@@ -31,15 +41,16 @@ To run one of the examples, you will need a **Microsoft Live ID** to sign up for
 
 ### Project Setup
 
-* Go to [LUIS.ai](https://www.luis.ai/) and create your account.
-* Create a new App and register the corresponding intents & entities. Examples can be found in files [Bot_en.md](Bot_en.md) & [Bot_es.md](Bot_es.md).
-* Train & Test your bot app.
-* Publish your app and copy its ${ENDPOINT_URL}
+* Environment configuration must be set by modifying the [LuisChatbot/.env](LuisChatbot/.env) & [NaiveBayesChatbot/.env](NaiveBayesChatbot/.env) files. Here you can configure your bot based on a specific language (English or Spanish (under construction)).
+* Go to [LUIS.ai](https://www.luis.ai/) and create an account.
+* Create a new App and configure the corresponding intents & entities for your bot. Examples can be found in files [Bot_en.md](Bot_en.md) & [Bot_es.md](Bot_es.md).
+* Train & Test your bot app under LUIS web environment.
+* Publish your app and copy its ${ENDPOINT_URL}. It is defined as `/luis/v2.0/apps/${LUIS_APPLICATION_ID}?subscription-key=${LUIS_SUBSCRIPTION_KEY}&timezoneOffset=0&verbose=true&q=`. You should copy the application values and set the corresponding environment variables on the [LuisChatbot/.env](LuisChatbot/.env) file.
 * Go to [Microsoft's BotFramework](https://dev.botframework.com/) and create your account.
 * Create a new bot in the *My bots* section. It will redirect you to the Azure cloud Platform.
 * Select Bot Channels Registration option.
 * When Configuring your bot, you need to set the *Messaging endpoint* property to your chatbot public URL assigned by ngrok (see instructions below)
-* Create and AppID & password in the Microsoft Application Registration Portal and set this properties on your new bot configuration.
+* Create and ${APPLICATION_iD} & ${APPLICATION_PASSWORD} in the Microsoft Application Registration Portal and set this properties both on your new bot configuration in Azure, and on the [LuisChatbot/.env](LuisChatbot/.env) & [NaiveBayesChatbot/.env](NaiveBayesChatbot/.env) files.
 
 ### Chatbot examples
 
@@ -64,5 +75,13 @@ Now You can test some interactions using the *Test in Web Chat* option in your M
 
 #### Chatbot with custom Naive Bayes intent classifier
 
+To run the example, you first need to train your model by running the following command:
+
+```bash
+~ $ cd NaiveBayesChatbot
+~ $ node app.js
+```
+
+Model will be saved on the `classifier.json` file. To deploy your model, just re-run the `node app.js` command.
 
 
