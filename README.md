@@ -9,6 +9,7 @@ To run one of the examples, you will need a **Microsoft Live ID** to sign up for
 ### Chatbot features
 
 * Intent-aware chatbot.
+* Connection with external APIs for product information retrieval.
 * Omnichannel communication framework, so you can plug-in your chatbot implementation on any messaging platform.
 * Messaging logging storage for analytics.
 * Chatbot implementation examples using a both a cloud-based ML service and a custom model.
