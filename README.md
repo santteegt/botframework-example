@@ -38,11 +38,31 @@ To run one of the examples, you will need a **Microsoft Live ID** to sign up for
 * Go to [Microsoft's BotFramework](https://dev.botframework.com/) and create your account.
 * Create a new bot in the *My bots* section. It will redirect you to the Azure cloud Platform.
 * Select Bot Channels Registration option.
-* When Configuring your bot, set the *Messaging endpoint* property to the ${ENDPOINT_URL}
+* When Configuring your bot, you need to set the *Messaging endpoint* property to your chatbot public URL assigned by ngrok (see instructions below)
 * Create and AppID & password in the Microsoft Application Registration Portal and set this properties on your new bot configuration.
 
 ### Chatbot examples
 
+In order to test your chatbot locally, you need to open a tunnel using ngrok. To do so, run the follwing command in another terminal:
+
+```bash
+~ $ ngrok http 3978
+```
+
+Then, enter to the web inspector [localhost:4040](localhost:4040) and copy the assigned HTTPS URL to the ${MESSAGING_ENDPOINT} property in the Botframework app you created.
+
 #### LUIS.ai powered chatbot
 
+Intent-aware chatbot definition can be replicated using intents & entities definitons in [Bot_en.md](Bot_en.md). To run the example, run the following on a terminal:
+
+```bash
+~ $ cd LuisChatbot
+~ $ node app.js
+```
+
+Now You can test some interactions using the *Test in Web Chat* option in your Microsoft Botframework instance.
+
 #### Chatbot with custom Naive Bayes intent classifier
+
+
+
