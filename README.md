@@ -61,7 +61,13 @@ In order to test your chatbot locally, you need to open a tunnel using ngrok. To
 ~ $ ngrok http 3978
 ```
 
-Then, enter to the web inspector [localhost:4040](localhost:4040) and copy the assigned HTTPS URL to the ${MESSAGING_ENDPOINT} property in the Botframework app you created.
+Then, enter to the web inspector [localhost:4040](localhost:4040) and copy the assigned HTTPS URL to the ${MESSAGING_ENDPOINT} property in the dev.botframework app you created.
+
+Additionally, you need to deploy a mongodb instance, for example, in another terminal you can run the following:
+
+```bash
+~ $ mongod --dbpath ./db/
+```
 
 #### LUIS.ai powered chatbot
 
